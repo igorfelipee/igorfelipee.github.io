@@ -23,13 +23,12 @@ const getRepos = (url) => {
 };
 
 const renderParticles = async () => {
-  await particlesJS.load('particles-js', 'particles.json', function() {
+  await particlesJS.load('particles-js', 'particles.json', () => {
     console.log('callback - particles.js config loaded');
   });
 };
 
 const renderInfosInPage = () => {
-
   let ss = sessionStorage.getItem('info');
   var infos = JSON.parse(ss);
 
@@ -38,7 +37,14 @@ const renderInfosInPage = () => {
   document.getElementById('desc').innerHTML = infos.bio;
   document.getElementById('repos').innerHTML = infos.public_repos;
   document.getElementById('followers').innerHTML = infos.followers;
+};
 
+const serviceWorkerInit = async () => {
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+           .register('./service-worker.js')
+           .then( await () => { console.log('Service Worker Registered'); });
+  }
 };
 
 (() => {
