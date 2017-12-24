@@ -48,6 +48,7 @@ const serviceWorkerInit = async () => {
 };
 
 (() => {
+  serviceWorkerInit();
   checkInfosInStorage(URL);
   renderParticles();
 })();
