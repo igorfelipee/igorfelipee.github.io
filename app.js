@@ -39,11 +39,11 @@ const renderInfosInPage = () => {
   document.getElementById('followers').innerHTML = infos.followers;
 };
 
-const serviceWorkerInit = async () => {
+const serviceWorkerInit = () => {
   if ('serviceWorker' in navigator) {
   navigator.serviceWorker
            .register('./service-worker.js')
-           .then( await () => { console.log('Service Worker Registered'); });
+           .then( () => { console.log('Service Worker Registered'); });
   }
 };
 
