@@ -9,6 +9,36 @@ main{
   height: 100vh;
   background-color: #2c3e50;
 }
+.slideInDown {
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes slideInDown {
+  0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes slideInDown {
+  0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
 
 .flex--mid{
   display: flex;
@@ -33,13 +63,14 @@ main{
   z-index: 100;
 }
 
-.flex--mid img{
+.flex--mid img#pic{
   display: block;
   margin: 0 auto;
   width: 200px;
   height: 200px;
   border-radius: 100%;
   border: 3px solid #fff;
+  transition: width .5s;
 }
 
 .flex--mid h1{
@@ -54,5 +85,37 @@ main{
   font-family: sans-serif;
   text-align: center;
   font-size: 15px;
+  color: white;
+}
+
+.infos--itens{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+}
+
+.infos--item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  padding: 20px;
+  width: 50%;
+}
+
+.infos--item img{
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.infos--item span{
+  padding: 10px 0 0 0;
+  color: #ecf0f1;
+  font-family: sans-serif;
+}
+
+.infos--item span.text{
   color: white;
 }

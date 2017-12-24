@@ -1,15 +1,22 @@
 const URL = new Request("https://api.github.com/users/igorfelipee");
 
 const checkInfosInStorage = (url) => {
-  sessionStorage.getItem('info') != null ? console.log('Já existe ') : getRepos(url)
+  if(sessionStorage.getItem('info') != null) {
+     renderInfosInPage();
+  }else {
+    getRepos(url);
+    setInterval( () => {
+      renderInfosInPage();
+    }, 100)
+  }
 };
 
-const getRepos = async (url) => {
-  await fetch(url)
-        .then(async (response) => {
-          return await response.json();
+const getRepos = (url) => {
+        fetch(url)
+        .then((response) => {
+          return response.json();
         })
-        .then(async (data) => {
+        .then((data) => {
           console.log('Storing in Session');
           sessionStorage.setItem('info', JSON.stringify(data));
         });
@@ -29,11 +36,12 @@ const renderInfosInPage = () => {
   document.getElementById('pic').src = infos.avatar_url;
   document.getElementById('name').innerHTML = infos.name;
   document.getElementById('desc').innerHTML = infos.bio;
+  document.getElementById('repos').innerHTML = infos.public_repos;
+  document.getElementById('followers').innerHTML = infos.followers;
 
 };
 
 (() => {
   checkInfosInStorage(URL);
   renderParticles();
-  renderInfosInPage();
 })();
