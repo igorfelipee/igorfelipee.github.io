@@ -1,5 +1,5 @@
 const cache = 'v1';
-
+const dataCacheName = 'v11'
 const filesToCache = [
   '/',
   'index.html',
