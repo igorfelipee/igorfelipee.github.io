@@ -42,7 +42,7 @@ const renderInfosInPage = () => {
 const serviceWorkerInit = () => {
   if ('serviceWorker' in navigator) {
   navigator.serviceWorker
-           .register('./service-worker.js')
+           .register('./sw.js')
            .then( () => { console.log('Service Worker Registered'); });
   }
 };
