@@ -22,4 +22,7 @@
     color: white;
     font-family: sans-serif;
   }
+  .wrapper > p{
+    color: white;
+  }
 }
